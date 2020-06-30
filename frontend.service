@@ -1,0 +1,16 @@
+[Unit]
+Description=Homeassistant Frontend
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/assistant-frontend
+ExecStart=/usr/bin/python3 /home/pi/assistant-frontend/main.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=frontend
+
+[Install]
+WantedBy=multi-user.target
+
