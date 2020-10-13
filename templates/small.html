@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <title>Homeassistant Frontend</title>
+</head>
+<body style="background-color: black; margin: 0; padding: 0;">
+  <video autoplay>
+    <source src="/assets/media/wave.m4v" type="video/mp4">
+  </video>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+  <script type="text/javascript">
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+    socket.on( 'connect', function() {
+     console.log("connected");
+    } )
+    socket.on( 'my response', function( msg ) {
+      console.log( msg );
+      if( typeof msg.user_name !== 'undefined' ) {
+        $( 'h3' ).remove();
+        $( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )
+      }
+    })
+  </script>
+
+</body>
+</html>

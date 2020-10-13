@@ -20,9 +20,13 @@ def background_thread(url):
 def send_assets(path):
     return send_from_directory('assets', path)
 
-@app.route('/screen')
-def screen():
-    return render_template('index.html')
+@app.route('/small')
+def small():
+    return render_template('small.html')
+
+@app.route('/large')
+def large():
+    return render_template('large.html')
 
 @app.route('/change', methods=['POST'])
 def change():
