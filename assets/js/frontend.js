@@ -1,25 +1,18 @@
 var Frontend = (function() {
 
-    var animateJuryText = function() {
-        var typed = new Typed('.juryTextValue', {
-            strings: ['HABEL'],
-            typeSpeed: 20
-        });
-    };
-
     var initClock = function() {
-        setInterval('Frontend.updateClock()', 1000);
-        $('.typed-cursor').show();
+        Frontend.updateClock()
+        setInterval('Frontend.updateClock()', 60000);
     };
 
     return {
         init: function() {
             initClock();
-            animateJuryText();
+            updateClock();
         },
 
         updateClock: function() {
-            $('.clock').html(moment().locale('de').format('LLLL'));
+            $('.clock').html(moment().locale('de').format('LLL'));
         }
     };
 })();
