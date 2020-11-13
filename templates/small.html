@@ -2,31 +2,20 @@
 <html lang="de">
 <head>
   <title>Homeassistant Frontend</title>
+  <link rel="stylesheet" href="/assets/css/frontend.css" type="text/css" />
 </head>
-<body style="background-color: black; margin: 0; padding: 0; overflow: hidden;">
-  <video autoplay loop muted style="position: absolute; top: 0; left: 0; min-width: 100%; min-height: 100%; z-index: -1;">
+<body>
+  <video autoplay loop muted class="backgroundvideo">
     <source src="/assets/media/starfield.mp4" type="video/mp4">
   </video>
 
-  <div class="clock" style="z-index: 200; color: white; font-size: 80vh; width: 100%; text-align: center;">18:30</div>
+  <div class="clock"></div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
-
-  <script type="text/javascript">
-    var socket = io.connect('http://' + document.domain + ':' + location.port);
-
-    socket.on( 'connect', function() {
-     console.log("connected");
-    } )
-    socket.on( 'my response', function( msg ) {
-      console.log( msg );
-      if( typeof msg.user_name !== 'undefined' ) {
-        $( 'h3' ).remove();
-        $( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )
-      }
-    })
-  </script>
-
+  <!-- EXTERNAL JS MODULES -->
+  <script src="/assets/js/ext/jquery-3.5.1.min.js"></script>
+  <script src="/assets/js/ext/moment-with-locales.min.js"></script>
+  
+  <!-- INTERNAL JS MODULES -->
+  <script src="/assets/js/frontend.js"></script>
 </body>
 </html>

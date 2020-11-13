@@ -1,0 +1,29 @@
+@font-face {
+    font-family:'myNeogrey';
+    src:url('/assets/font/NeogreyRegular.otf') format('truetype');
+}
+
+body {
+    background-color: black; 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden;
+}
+
+.backgroundvideo {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    min-width: 100%; 
+    min-height: 100%; 
+    z-index: -1;
+}
+
+.clock {
+    font-family:'myNeogrey';
+    z-index: 200; 
+    color: white; 
+    font-size: 60vh; 
+    width: 100%; 
+    text-align: center;
+}
