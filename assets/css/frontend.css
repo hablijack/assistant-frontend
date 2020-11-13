@@ -23,8 +23,9 @@ body {
 
 .clock {
     font-family:'myNeogrey';
-    z-index: 200; 
-	color:#73d8fd;
+    z-index: 200;
+    margin-top: 80px; 
+    color: white;
     font-size: 40vh; 
     width: 100%; 
     height: 100%;
