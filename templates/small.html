@@ -4,9 +4,11 @@
   <title>Homeassistant Frontend</title>
 </head>
 <body style="background-color: black; margin: 0; padding: 0; overflow: hidden;">
-  <video autoplay loop muted style="position: absolute; top: 0; left: 0; min-width: 100%; min-height: 100%;">
-    <source src="/assets/media/video.mp4" type="video/mp4">
+  <video autoplay loop muted style="position: absolute; top: 0; left: 0; min-width: 100%; min-height: 100%; z-index: -1;">
+    <source src="/assets/media/starfield.mp4" type="video/mp4">
   </video>
+
+  <div class="clock" style="z-index: 200; color: white; font-size: 80vh; width: 100%; text-align: center;">18:30</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
