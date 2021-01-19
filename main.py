@@ -5,16 +5,15 @@ import subprocess
 app = Flask(__name__)
 socketio = SocketIO(app, async_mode='threading')
 
-def background_thread(url):
+def play_mp3(url, topic):
     try:
+        socketio.emit('change', topic)
         curl = subprocess.Popen(['curl', '--silent', url], stdout=subprocess.PIPE)
         mpg = subprocess.Popen(['mpg123', '-q', '-a', 'hw:1,0', '-'], stdin=curl.stdout, stdout=subprocess.PIPE).wait()
-        #subprocess.Popen([ '/usr/bin/mpg123', '-a', 'hw:1,0', url ], stdout=subprocess.PIPE ).wait()
     except:
         print("nix fehler gut")
     finally:
         socketio.emit('change', 'waiting')
-
 
 @app.route('/assets/<path:path>')
 def send_assets(path):
@@ -30,11 +29,9 @@ def large():
 
 @app.route('/change', methods=['POST'])
 def change():
-    print('received change event by api gateway')
     topic = request.json['topic']
     if topic == "news":
-        socketio.emit('change', 'news')
-        thread = socketio.start_background_task(background_thread, request.json['url'])
+        thread = socketio.start_background_task(play_mp3, request.json['url'], topic)
     return jsonify({"state": "ok"})
 
 if __name__ == '__main__':
