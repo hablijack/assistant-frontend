@@ -21,6 +21,16 @@ body {
     z-index: -1;
 }
 
+.newsimage{
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.newsimage img{
+    width: 100%;
+    height: 100%;
+}
+
 .clock {
     font-family:'myNeogrey';
     z-index: 200;

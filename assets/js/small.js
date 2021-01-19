@@ -1,16 +1,12 @@
 var Frontend = (function() {
-
     var initClock = function() {
         Frontend.updateClock()
-        setInterval('Frontend.updateClock()', 60000);
+        setInterval('Frontend.updateClock()', 50000);
     };
-
     return {
         init: function() {
             initClock();
-            updateClock();
         },
-
         updateClock: function() {
             $('.clock').html(moment().locale('de').format('LT'));
         }
@@ -18,5 +14,6 @@ var Frontend = (function() {
 })();
 
 $(document).ready( function() {
-	Frontend.init();
+    Frontend.init();
+    Frontend.updateClock();
 });
